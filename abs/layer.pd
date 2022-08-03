@@ -1,35 +1,35 @@
-#N canvas 8 109 1904 963 12;
+#N canvas 351 117 1468 921 12;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-1 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 99 graph;
 #X obj 46 101 vsl 15 145 0 127 0 0 empty \$1-1_value empty 0 -9 0 10
--159808 -232576 -1 12024 1;
+-159808 -232576 -1 11760 1;
 #X obj 69 254 hsl 695 15 0 1000 0 0 empty \$1-1_index empty -2 -8 0
-10 -232576 -159808 -1 3123 1;
-#X floatatom 635 69 7 0 0 0 - #1-1_rate_save #1-1_rate;
+10 -232576 -159808 -1 43930 1;
+#X floatatom 635 69 7 0 0 0 - #1-1_rate_set #1-1_rate;
 #X obj 692 69 curve \$1 1;
-#X obj 46 39 bng 15 250 50 0 \$1_save empty empty 17 7 0 10 -262144
+#X obj 46 39 bng 20 250 50 0 \$1_save empty empty 17 7 0 10 -262144
 -159808 -232576;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-2 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 309 graph;
 #X obj 46 311 vsl 15 145 0 127 0 0 empty \$1-2_value empty 0 -9 0 10
--159808 -232576 -1 7008 1;
+-159808 -232576 -1 11136 1;
 #X obj 69 464 hsl 695 15 0 1000 0 0 empty \$1-2_index empty -2 -8 0
-10 -232576 -159808 -1 37337 1;
-#X floatatom 635 279 7 0 0 0 - #1-2_rate_save #1-2_rate;
+10 -232576 -159808 -1 68428 1;
+#X floatatom 635 279 7 0 0 0 - #1-2_rate_set #1-2_rate;
 #X obj 692 279 curve \$1 2;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-3 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 519 graph;
 #X obj 46 521 vsl 15 145 0 127 0 0 empty \$1-3_value empty 0 -9 0 10
--159808 -232576 -1 7200 1;
+-159808 -232576 -1 5924 1;
 #X obj 69 674 hsl 695 15 0 1000 0 0 empty \$1-3_index empty -2 -8 0
-10 -232576 -159808 -1 5274 1;
-#X floatatom 635 489 7 0 0 0 - #1-3_rate_save #1-3_rate;
+10 -232576 -159808 -1 34214 1;
+#X floatatom 635 489 7 0 0 0 - #1-3_rate_set #1-3_rate;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-4 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
@@ -37,12 +37,68 @@
 #X obj 46 731 vsl 15 145 0 127 0 0 empty \$1-4_value empty 0 -9 0 10
 -159808 -232576 -1 7200 1;
 #X obj 69 884 hsl 695 15 0 1000 0 0 empty \$1-4_index empty -2 -8 0
-10 -232576 -159808 -1 10549 1;
-#X floatatom 635 699 7 0 0 0 - #1-4_rate_save #1-4_rate;
+10 -232576 -159808 -1 51287 1;
+#X floatatom 635 699 7 0 0 0 - #1-4_rate_set #1-4_rate;
 #X obj 692 489 curve \$1 3;
 #X obj 692 699 curve \$1 4;
-#X text 68 36 save curves;
-#X obj 968 269 text define \$1-data;
-#X text 958 227 my key value preset system;
-#X text 965 313 bounce to disk \, and load on start - remember to send
-to graphical objects;
+#N canvas 0 101 1202 812 preset 0;
+#X msg 160 240 write ../text/sd_kick.txt;
+#X msg 170 300 read ../text/sd_kick.txt;
+#X obj 160 330 text define \$1-data;
+#X obj 162 142 r \$1-data_save;
+#X obj 170 270 r \$1-data_load;
+#X obj 351 90 loadbang;
+#X obj 351 120 t b b;
+#X obj 353 232 s \$1-data_load;
+#X obj 448 289 symbol \$1;
+#X msg 387 338 set write ../text/\$1.txt;
+#X msg 391 384 set read ../text/\$1.txt;
+#X obj 506 182 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 32 38 scene \$1 1;
+#X obj 28 65 scene \$1 2;
+#X obj 23 97 scene \$1 3;
+#X obj 19 124 scene \$1 4;
+#X connect 0 0 2 0;
+#X connect 1 0 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 1 8 0;
+#X connect 8 0 9 0;
+#X connect 8 0 10 0;
+#X connect 9 0 0 0;
+#X connect 10 0 1 0;
+#X connect 11 0 8 0;
+#X restore 76 39 pd preset;
+#X msg 916 347 scene 1;
+#X msg 996 347 scene 2;
+#X msg 1076 347 scene 3;
+#X msg 1156 347 scene 4;
+#X floatatom 916 378 5 0 0 0 - #1-1_trigger_set #1-1_trigger;
+#X floatatom 916 408 5 0 0 0 - #1-1_pitch_set #1-1_pitch;
+#X floatatom 916 438 5 0 0 0 - - -;
+#X floatatom 916 468 5 0 0 0 - - -;
+#X floatatom 996 378 5 0 0 0 - #1-2_trigger_set #1-2_trigger;
+#X floatatom 996 408 5 0 0 0 - #1-2_pitch_set #1-2_pitch;
+#X floatatom 996 438 5 0 0 0 - - -;
+#X floatatom 996 468 5 0 0 0 - - -;
+#X floatatom 1076 378 5 0 0 0 - #1-3_trigger_set #1-3_trigger;
+#X floatatom 1076 408 5 0 0 0 - #1-3_pitch_set #1-3_pitch;
+#X floatatom 1076 438 5 0 0 0 - - -;
+#X floatatom 1076 468 5 0 0 0 - - -;
+#X floatatom 1156 378 5 0 0 0 - #1-4_trigger_set #1-4_trigger;
+#X floatatom 1156 408 5 0 0 0 - #1-4_pitch_set #1-4_pitch;
+#X floatatom 1156 438 5 0 0 0 - - -;
+#X floatatom 1156 468 5 0 0 0 - - -;
+#X text 1224 379 trigger;
+#X text 1224 409 pitch;
+#X text 1231 442 etc;
+#X text 1233 468 etc;
+#X text 902 554 also some feedback to top level would be great;
+#X text 894 228 okay then we want the ability to select and scene and
+it runs to a preset \, given the limited complexity of these compositins
+\, I think we could even do it as a strip as so:;
+#X text 950 586 first thing \, rig trigger integer to work as presets
+;
