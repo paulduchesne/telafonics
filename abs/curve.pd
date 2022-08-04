@@ -1,4 +1,4 @@
-#N canvas 177 117 1584 963 12;
+#N canvas 0 101 1920 979 12;
 #X obj 38 48 r coeur;
 #X obj 38 92 * 1;
 #X text 87 94 rate \, 0.5 would be half speed;

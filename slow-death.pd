@@ -1,8 +1,8 @@
-#N canvas 519 173 672 299 12;
+#N canvas 567 152 672 299 12;
 #N canvas 8 629 948 443 spine 0;
 #X obj 69 109 loadbang;
 #X obj 174 262 + 1;
-#X msg 69 278 82404;
+#X msg 69 278 161130;
 #X msg 174 291 set \$1;
 #X obj 69 142 t b b;
 #X msg 166 194 set 0;
@@ -16,6 +16,8 @@
 #X msg 408 238 3500;
 #X obj 402 291 s interval_save;
 #X obj 478 214 loadbang;
+#X text 91 54 maybe you want to add a delay here to let everything
+load?;
 #X connect 0 0 4 0;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
@@ -35,7 +37,7 @@
 #X obj 33 127 abs/layer sd_kick;
 #X obj 33 157 abs/layer sd_snare;
 #X floatatom 33 67 5 0 0 0 - interval_save interval;
-#N canvas 1013 251 682 423 scene 0;
+#N canvas 177 208 713 627 scene 0;
 #X obj 418 207 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 418 133 loadbang;
@@ -47,9 +49,10 @@
 #X msg 287 147 2;
 #X msg 320 180 3;
 #X msg 339 150 4;
-#X obj 294 354 s scene;
+#X obj 272 486 s scene;
 #X obj 303 283 loadbang;
-#X msg 313 323 1;
+#X msg 295 410 1;
+#X obj 336 347 del 50;
 #X connect 0 0 3 1;
 #X connect 1 0 2 0;
 #X connect 2 0 0 0;
@@ -63,7 +66,8 @@
 #X connect 7 0 3 0;
 #X connect 8 0 3 0;
 #X connect 9 0 3 0;
-#X connect 11 0 12 0;
+#X connect 11 0 13 0;
 #X connect 12 0 10 0;
+#X connect 13 0 12 0;
 #X restore 103 37 pd scene;
 #X floatatom 103 67 5 0 0 0 - scene scene_junk;

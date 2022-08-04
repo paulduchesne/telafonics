@@ -1,12 +1,12 @@
-#N canvas 351 117 1468 921 12;
+#N canvas 397 159 1468 921 12;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-1 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 99 graph;
 #X obj 46 101 vsl 15 145 0 127 0 0 empty \$1-1_value empty 0 -9 0 10
--159808 -232576 -1 11760 1;
+-159808 -232576 -1 2630 1;
 #X obj 69 254 hsl 695 15 0 1000 0 0 empty \$1-1_index empty -2 -8 0
-10 -232576 -159808 -1 43930 1;
+10 -232576 -159808 -1 38795 1;
 #X floatatom 635 69 7 0 0 0 - #1-1_rate_set #1-1_rate;
 #X obj 692 69 curve \$1 1;
 #X obj 46 39 bng 20 250 50 0 \$1_save empty empty 17 7 0 10 -262144
@@ -16,9 +16,9 @@
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 309 graph;
 #X obj 46 311 vsl 15 145 0 127 0 0 empty \$1-2_value empty 0 -9 0 10
--159808 -232576 -1 11136 1;
+-159808 -232576 -1 11040 1;
 #X obj 69 464 hsl 695 15 0 1000 0 0 empty \$1-2_index empty -2 -8 0
-10 -232576 -159808 -1 68428 1;
+10 -232576 -159808 -1 67873 1;
 #X floatatom 635 279 7 0 0 0 - #1-2_rate_set #1-2_rate;
 #X obj 692 279 curve \$1 2;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -26,9 +26,9 @@
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 519 graph;
 #X obj 46 521 vsl 15 145 0 127 0 0 empty \$1-3_value empty 0 -9 0 10
--159808 -232576 -1 5924 1;
+-159808 -232576 -1 5664 1;
 #X obj 69 674 hsl 695 15 0 1000 0 0 empty \$1-3_index empty -2 -8 0
-10 -232576 -159808 -1 34214 1;
+10 -232576 -159808 -1 68637 1;
 #X floatatom 635 489 7 0 0 0 - #1-3_rate_set #1-3_rate;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-4 1000 float 0;
@@ -37,11 +37,11 @@
 #X obj 46 731 vsl 15 145 0 127 0 0 empty \$1-4_value empty 0 -9 0 10
 -159808 -232576 -1 7200 1;
 #X obj 69 884 hsl 695 15 0 1000 0 0 empty \$1-4_index empty -2 -8 0
-10 -232576 -159808 -1 51287 1;
+10 -232576 -159808 -1 68220 1;
 #X floatatom 635 699 7 0 0 0 - #1-4_rate_set #1-4_rate;
 #X obj 692 489 curve \$1 3;
 #X obj 692 699 curve \$1 4;
-#N canvas 0 101 1202 812 preset 0;
+#N canvas 249 440 1202 812 preset 0;
 #X msg 160 240 write ../text/sd_kick.txt;
 #X msg 170 300 read ../text/sd_kick.txt;
 #X obj 160 330 text define \$1-data;
@@ -96,9 +96,92 @@
 #X text 1224 409 pitch;
 #X text 1231 442 etc;
 #X text 1233 468 etc;
-#X text 902 554 also some feedback to top level would be great;
+#X text 952 549 also some feedback to top level would be great;
 #X text 894 228 okay then we want the ability to select and scene and
 it runs to a preset \, given the limited complexity of these compositins
 \, I think we could even do it as a strip as so:;
-#X text 950 586 first thing \, rig trigger integer to work as presets
+#X text 1000 581 first thing \, rig trigger integer to work as presets
 ;
+#X text 973 628 so what happens \, scene pulls the trigger out of the
+textfile;
+#N canvas 0 101 1350 879 pull_value 0;
+#X obj 376 275 r scene;
+#X floatatom 381 314 5 0 0 0 - - -;
+#X obj 383 533 text search \$1-data;
+#X obj 451 277 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 459 334 symbol \$1;
+#X floatatom 463 697 5 0 0 0 - - -;
+#X obj 386 592 text get \$1-data;
+#X msg 572 627 \$2;
+#X obj 466 251 loadbang;
+#X obj 587 158 inlet;
+#X obj 360 383 pack f s s;
+#X msg 363 430 symbol \$2-\$1_\$3;
+#X obj 476 797 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 10 0;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 4 0 10 1;
+#X connect 5 0 12 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 3 0;
+#X connect 9 0 10 2;
+#X connect 10 0 11 0;
+#X connect 11 0 2 0;
+#X restore 891 719 pd pull_value;
+#X obj 893 692 symbol trigger;
+#X floatatom 889 757 5 0 0 0 - - -;
+#X obj 895 649 loadbang;
+#N canvas 71 421 744 603 select_curve 0;
+#X obj 48 175 inlet;
+#X obj 190 270 == 1;
+#X obj 187 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 162 349 spigot;
+#X obj 110 119 r \$1-1_voltage;
+#X obj 187 447 outlet;
+#X obj 322 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 297 341 spigot;
+#X obj 442 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 417 341 spigot;
+#X obj 577 287 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 552 333 spigot;
+#X obj 325 262 == 2;
+#X obj 445 262 == 3;
+#X obj 580 254 == 4;
+#X obj 245 111 r \$1-2_voltage;
+#X obj 365 111 r \$1-3_voltage;
+#X obj 500 103 r \$1-4_voltage;
+#X connect 0 0 1 0;
+#X connect 0 0 12 0;
+#X connect 0 0 13 0;
+#X connect 0 0 14 0;
+#X connect 1 0 2 0;
+#X connect 2 0 3 1;
+#X connect 3 0 5 0;
+#X connect 4 0 3 0;
+#X connect 6 0 7 1;
+#X connect 7 0 5 0;
+#X connect 8 0 9 1;
+#X connect 9 0 5 0;
+#X connect 10 0 11 1;
+#X connect 11 0 5 0;
+#X connect 12 0 6 0;
+#X connect 13 0 8 0;
+#X connect 14 0 10 0;
+#X connect 15 0 7 0;
+#X connect 16 0 9 0;
+#X connect 17 0 11 0;
+#X restore 879 796 pd select_curve;
+#X floatatom 880 833 5 0 0 0 - - -;
+#X connect 50 0 52 0;
+#X connect 51 0 50 0;
+#X connect 52 0 54 0;
+#X connect 53 0 51 0;
+#X connect 54 0 55 0;
