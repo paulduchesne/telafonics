@@ -1,9 +1,9 @@
-sd_kick-1_rate 1.86;
+sd_kick-1_rate 1;
 sd_kick-2_rate 1;
 sd_kick-3_rate 0.5;
-sd_kick-4_rate 0.75;
+sd_kick-4_rate 0.5;
 symbol 0;
-sd_kick-1_trigger 47;
+sd_kick-1_trigger 1;
 sd_kick-2_trigger 30;
 sd_kick-3_trigger -31;
 sd_kick-4_trigger 43;
