@@ -4,9 +4,9 @@
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 99 graph;
 #X obj 46 101 vsl 15 145 0 127 0 0 empty \$1-1_value empty 0 -9 0 10
--159808 -232576 -1 480 1;
+-159808 -232576 -1 2664 1;
 #X obj 69 254 hsl 695 15 0 1000 0 0 empty \$1-1_index empty -2 -8 0
-10 -232576 -159808 -1 65583 1;
+10 -232576 -159808 -1 49552 1;
 #X floatatom 635 69 7 0 0 0 - #1-1_rate_set #1-1_rate;
 #X obj 692 69 curve \$1 1;
 #X obj 46 39 bng 20 250 50 0 \$1_save empty empty 17 7 0 10 -262144
@@ -16,9 +16,9 @@
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 309 graph;
 #X obj 46 311 vsl 15 145 0 127 0 0 empty \$1-2_value empty 0 -9 0 10
--159808 -232576 -1 10752 1;
+-159808 -232576 -1 7104 1;
 #X obj 69 464 hsl 695 15 0 1000 0 0 empty \$1-2_index empty -2 -8 0
-10 -232576 -159808 -1 65583 1;
+10 -232576 -159808 -1 49552 1;
 #X floatatom 635 279 7 0 0 0 - #1-2_rate_set #1-2_rate;
 #X obj 692 279 curve \$1 2;
 #N canvas 0 50 450 250 (subpatch) 0;
@@ -26,18 +26,18 @@
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 519 graph;
 #X obj 46 521 vsl 15 145 0 127 0 0 empty \$1-3_value empty 0 -9 0 10
--159808 -232576 -1 5993 1;
+-159808 -232576 -1 6240 1;
 #X obj 69 674 hsl 695 15 0 1000 0 0 empty \$1-3_index empty -2 -8 0
-10 -232576 -159808 -1 32757 1;
+10 -232576 -159808 -1 24776 1;
 #X floatatom 635 489 7 0 0 0 - #1-3_rate_set #1-3_rate;
 #N canvas 0 50 450 250 (subpatch) 0;
 #X array \$1-4 1000 float 0;
 #X coords 0 1 999 -1 700 150 1 0 0;
 #X restore 66 729 graph;
 #X obj 46 731 vsl 15 145 0 127 0 0 empty \$1-4_value empty 0 -9 0 10
--159808 -232576 -1 3552 1;
+-159808 -232576 -1 2717 1;
 #X obj 69 884 hsl 695 15 0 1000 0 0 empty \$1-4_index empty -2 -8 0
-10 -232576 -159808 -1 32757 1;
+10 -232576 -159808 -1 24776 1;
 #X floatatom 635 699 7 0 0 0 - #1-4_rate_set #1-4_rate;
 #X obj 692 489 curve \$1 3;
 #X obj 692 699 curve \$1 4;
@@ -181,6 +181,88 @@ in from the same system;
 ;
 #X obj 823 606 s \$1-hit;
 #X obj 979 406 sel 1;
+#X obj 1282 415 openpanel;
+#X obj 1297 385 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X text 1323 381 < load a sample \, save to preset;
+#N canvas 804 109 1108 963 extract_filename 0;
+#X obj 42 31 inlet;
+#X obj 43 59 list fromsymbol;
+#X obj 69 841 list tosymbol;
+#X obj 172 167 list length;
+#X obj 398 223 float;
+#X obj 403 268 + 1;
+#X floatatom 171 277 5 0 0 0 - - -;
+#X obj 214 398 < 27;
+#X obj 302 426 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 311 108 sel 1;
+#X floatatom 98 430 5 0 0 0 - - -;
+#X obj 58 567 list split;
+#X obj 62 526 list;
+#X obj 173 203 t b f b;
+#X msg 239 238 set 0;
+#X obj 173 566 pack;
+#X obj 91 470 t b f f;
+#X msg 141 533 \$1;
+#X obj 159 624 route 47;
+#X obj 387 139 del 5;
+#X obj 235 353 - 1;
+#X obj 148 372 t b f f;
+#X obj 259 475 float;
+#X obj 277 547 sel 0;
+#X obj 260 708 print gold;
+#X obj 259 668 float;
+#X obj 41 98 t l l l;
+#X obj 133 733 list;
+#X obj 139 793 list split;
+#X obj 187 703 t b f;
+#X obj 238 767 + 1;
+#X obj 64 883 outlet;
+#X connect 0 0 1 0;
+#X connect 1 0 26 0;
+#X connect 2 0 31 0;
+#X connect 3 0 13 0;
+#X connect 4 0 5 0;
+#X connect 5 0 6 0;
+#X connect 6 0 4 1;
+#X connect 6 0 21 0;
+#X connect 7 0 8 0;
+#X connect 7 0 22 1;
+#X connect 8 0 9 0;
+#X connect 9 0 19 0;
+#X connect 10 0 16 0;
+#X connect 11 1 17 0;
+#X connect 12 0 11 0;
+#X connect 13 0 6 0;
+#X connect 13 1 20 0;
+#X connect 13 2 14 0;
+#X connect 14 0 6 0;
+#X connect 15 0 18 0;
+#X connect 16 0 12 0;
+#X connect 16 1 11 1;
+#X connect 16 2 15 1;
+#X connect 17 0 15 0;
+#X connect 18 0 25 1;
+#X connect 19 0 4 0;
+#X connect 20 0 7 1;
+#X connect 21 0 22 0;
+#X connect 21 1 10 0;
+#X connect 21 2 7 0;
+#X connect 22 0 23 0;
+#X connect 23 0 25 0;
+#X connect 25 0 24 0;
+#X connect 25 0 29 0;
+#X connect 26 0 3 0;
+#X connect 26 1 12 1;
+#X connect 26 2 27 1;
+#X connect 27 0 28 0;
+#X connect 28 1 2 0;
+#X connect 29 0 27 0;
+#X connect 29 1 30 0;
+#X connect 30 0 28 1;
+#X restore 1282 446 pd extract_filename;
+#X symbolatom 1283 481 20 0 0 0 - - -;
 #X connect 46 0 49 0;
 #X connect 47 0 46 0;
 #X connect 48 0 47 0;
@@ -189,3 +271,6 @@ in from the same system;
 #X connect 51 0 57 0;
 #X connect 52 0 56 0;
 #X connect 57 0 52 0;
+#X connect 58 0 61 0;
+#X connect 59 0 58 0;
+#X connect 61 0 62 0;
