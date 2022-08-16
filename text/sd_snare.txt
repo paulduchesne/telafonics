@@ -10,3 +10,7 @@ sd_snare-1_pitch 11;
 sd_snare-2_pitch 22;
 sd_snare-3_pitch 33;
 sd_snare-4_pitch 44;
+sd_snare-sample marcel.wav;
+sd_snare-1_start 2;
+sd_snare-1_attack 3;
+sd_snare-1_decay 4;
