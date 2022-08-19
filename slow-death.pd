@@ -1,8 +1,8 @@
-#N canvas 964 109 948 963 12;
-#N canvas 964 629 948 443 spine 0;
+#N canvas 954 32 948 963 12;
+#N canvas 954 552 948 443 spine 0;
 #X obj 80 28 loadbang;
 #X obj 174 262 + 1;
-#X msg 69 278 2280;
+#X msg 69 278 203194;
 #X msg 174 291 set \$1;
 #X obj 69 142 t b b;
 #X msg 166 194 set 0;
@@ -21,8 +21,9 @@ load?;
 #X obj 73 94 del 500;
 #X msg 621 104 \; pd dsp 1;
 #X obj 620 66 loadbang;
-#X obj 706 52 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144 -1
--1;
+#X obj 706 52 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X connect 0 0 17 0;
 #X connect 1 0 3 0;
 #X connect 2 0 1 0;
 #X connect 2 0 6 0;
@@ -42,10 +43,10 @@ load?;
 #X connect 20 0 18 0;
 #X restore 33 37 pd spine;
 #X obj 33 157 abs/layer sd_snare;
-#X floatatom 33 67 5 0 0 0 - interval_save interval;
-#N canvas 1220 109 692 963 scene 0;
-#X obj 418 207 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X floatatom 33 67 5 0 0 0 - interval_save interval 0;
+#N canvas 954 552 948 443 scene 0;
+#X obj 418 207 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 418 133 loadbang;
 #X msg 416 170 0;
 #X obj 264 240 spigot;
@@ -64,15 +65,15 @@ load?;
 #X obj 525 225 hid 0;
 #X obj 581 141 t b b;
 #X obj 578 107 loadbang;
-#X obj 523 312 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 523 312 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 525 255 route key;
-#X obj 573 313 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 628 310 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
-#X obj 678 311 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 573 313 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 628 310 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 678 311 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 522 282 route btn_0 btn_1 btn_2 btn_3;
 #X obj 521 343 sel 1;
 #X obj 585 339 sel 1;
@@ -164,5 +165,5 @@ load?;
 #X connect 51 0 46 0;
 #X connect 52 0 49 0;
 #X restore 104 38 pd scene;
-#X floatatom 103 67 5 0 0 0 - scene scene_junk;
+#X floatatom 103 67 5 0 0 0 - scene scene_junk 0;
 #X obj 33 127 abs/layer sd_kick;
