@@ -2,7 +2,7 @@ sd_snare-4_rate 1;
 sd_snare-3_rate 1;
 sd_snare-2_rate 1;
 sd_snare-1_rate 1;
-sd_snare-1_trigger 1;
+sd_snare-1_trigger 6;
 sd_snare-2_trigger 67;
 sd_snare-3_trigger 3;
 sd_snare-4_trigger 4;

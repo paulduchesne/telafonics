@@ -1,0 +1,32 @@
+#N canvas 8 629 948 443 12;
+#X obj 158 153 r scene;
+#X floatatom 163 192 5 0 0 0 - - -;
+#X obj 165 411 text search \$1-data;
+#X obj 233 155 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 241 212 symbol \$1;
+#X floatatom 245 575 5 0 0 0 - - -;
+#X obj 168 470 text get \$1-data;
+#X msg 354 505 \$2;
+#X obj 248 129 loadbang;
+#X obj 142 261 pack f s s;
+#X msg 145 308 symbol \$2-\$1_\$3;
+#X obj 258 675 outlet;
+#X obj 395 135 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 410 109 loadbang;
+#X obj 403 192 symbol \$2;
+#X connect 0 0 1 0;
+#X connect 1 0 9 0;
+#X connect 2 0 6 0;
+#X connect 3 0 4 0;
+#X connect 4 0 9 1;
+#X connect 5 0 11 0;
+#X connect 6 0 7 0;
+#X connect 7 0 5 0;
+#X connect 8 0 3 0;
+#X connect 9 0 10 0;
+#X connect 10 0 2 0;
+#X connect 12 0 14 0;
+#X connect 13 0 12 0;
+#X connect 14 0 9 2;
