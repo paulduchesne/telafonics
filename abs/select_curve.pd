@@ -1,19 +1,19 @@
-#N canvas 964 361 948 711 12;
+#N canvas -2 32 1904 963 12;
 #X obj 48 175 inlet;
 #X obj 190 270 == 1;
-#X obj 187 303 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 187 303 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 162 349 spigot;
 #X obj 110 119 r \$1-1_voltage;
 #X obj 187 447 outlet;
-#X obj 322 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 322 295 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 297 341 spigot;
-#X obj 442 295 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 442 295 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 417 341 spigot;
-#X obj 577 287 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 577 287 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 552 333 spigot;
 #X obj 325 262 == 2;
 #X obj 445 262 == 3;
@@ -21,17 +21,17 @@
 #X obj 245 111 r \$1-2_voltage;
 #X obj 365 111 r \$1-3_voltage;
 #X obj 500 103 r \$1-4_voltage;
-#X obj 728 280 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 728 280 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 703 326 spigot;
-#X obj 863 272 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 863 272 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 838 318 spigot;
-#X obj 983 272 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
-1;
+#X obj 983 272 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 958 318 spigot;
-#X obj 1118 264 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1
-1 1;
+#X obj 1118 264 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
 #X obj 1093 310 spigot;
 #X obj 651 96 r \$1-5_voltage;
 #X obj 786 89 r \$1-6_voltage;
@@ -41,38 +41,11 @@
 #X obj 866 239 == 6;
 #X obj 986 239 == 7;
 #X obj 1121 231 == 8;
-#X obj 248 513 *;
-#X obj 372 462 r;
-#N canvas 1442 109 470 175 pull_value 0;
-#X obj 376 275 r scene;
-#X floatatom 381 314 5 0 0 0 - - -;
-#X obj 383 533 text search \$1-data;
-#X obj 451 277 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
--1 -1;
-#X obj 459 334 symbol \$1;
-#X floatatom 463 697 5 0 0 0 - - -;
-#X obj 386 592 text get \$1-data;
-#X msg 572 627 \$2;
-#X obj 466 251 loadbang;
-#X obj 587 158 inlet;
-#X obj 360 383 pack f s s;
-#X msg 363 430 symbol \$2-\$1_\$3;
-#X obj 476 797 outlet;
-#X connect 0 0 1 0;
-#X connect 1 0 10 0;
-#X connect 2 0 6 0;
-#X connect 3 0 4 0;
-#X connect 4 0 10 1;
-#X connect 5 0 12 0;
-#X connect 6 0 7 0;
-#X connect 7 0 5 0;
-#X connect 8 0 3 0;
-#X connect 9 0 10 2;
-#X connect 10 0 11 0;
-#X connect 11 0 2 0;
-#X restore 576 540 pd pull_value;
-#X obj 578 513 symbol trigger;
-#X obj 570 486 loadbang;
+#X obj 1265 257 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 1240 303 spigot;
+#X obj 1268 224 == 27;
+#X obj 1227 96 r manual;
 #X connect 0 0 1 0;
 #X connect 0 0 12 0;
 #X connect 0 0 13 0;
@@ -81,6 +54,7 @@
 #X connect 0 0 31 0;
 #X connect 0 0 32 0;
 #X connect 0 0 33 0;
+#X connect 0 0 36 0;
 #X connect 1 0 2 0;
 #X connect 2 0 3 1;
 #X connect 3 0 5 0;
@@ -113,5 +87,7 @@
 #X connect 31 0 20 0;
 #X connect 32 0 22 0;
 #X connect 33 0 24 0;
-#X connect 37 0 36 0;
-#X connect 38 0 37 0;
+#X connect 34 0 35 1;
+#X connect 35 0 5 0;
+#X connect 36 0 34 0;
+#X connect 37 0 35 0;

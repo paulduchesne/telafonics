@@ -1,10 +1,10 @@
-#N canvas -1 31 1920 979 12;
+#N canvas -2 32 1904 963 12;
 #X obj 32 37 curve \$1 1;
 #X obj 32 917 bng 20 250 50 0 \$1_save empty save\\\ curves 27 9 0
 13 #fcfcfc #9c00fc #9c00ff;
 #N canvas 954 32 948 963 preset 0;
-#X msg 100 200 write ../text/sd_kick.txt;
-#X msg 110 260 read ../text/sd_kick.txt;
+#X msg 100 200 write ../text/sd_snare.txt;
+#X msg 110 260 read ../text/sd_snare.txt;
 #X obj 100 290 text define \$1-data;
 #X obj 112 152 r \$1-data_save;
 #X obj 110 230 r \$1-data_load;
@@ -112,7 +112,7 @@
 #X symbolatom 59 362 20 0 0 0 - - - 0;
 #X obj 132 673 soundfiler;
 #X obj 57 55 table \$1-sample 1000;
-#X msg 131 637 read -resize ../audio/karelle.wav sd_kick-sample;
+#X msg 131 637 read -resize ../audio/marcel.wav sd_snare-sample;
 #X obj 186 451 symbol \$1-sample;
 #X obj 159 495 pack s s;
 #X obj 184 423 loadbang;
@@ -229,7 +229,7 @@
 #X obj 32 587 curve \$1 6;
 #X obj 32 697 curve \$1 7;
 #X obj 32 807 curve \$1 8;
-#N canvas 954 32 948 963 playback 0;
+#N canvas 954 412 948 583 playback 0;
 #X obj 107 145 f;
 #X obj 219 146 + 1;
 #X obj 110 173 % 4;
