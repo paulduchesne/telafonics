@@ -1,0 +1,192 @@
+#N canvas 960 69 960 986 12;
+#X text 100 100 Telafonics;
+#X text 100 210 Goals: 1) basic looper which allows input for a four
+track with a set length and shared loop length for playback;
+#X text 100 261 2) ability to save files as single multichannel wav
+;
+#X text 100 291 3) amplitude matrix \, saved as array preset;
+#X text 100 321 4) toggle amplitude presets using midi input;
+#X text 600 100 What ability do you want to have to record or playback
+\, this is the key component here.;
+#X text 600 150 I think you want incoming audio constantly feeding
+through \, or maybe some kind of gain knob. Recording playback is separate
+\, so there is a clear distinction between live audio and playback
+\, which probably requires muting recording tracks.;
+#X text 600 240 Limitation should be that only one track can be recorded
+at a time.;
+#X obj 600 300 adc~ 1;
+#X text 660 300 incoming sound;
+#X obj 800 360 moonlib/mknob 25 100 0 127 0 0 empty empty empty -2
+-6 0 8 #fcfcfc #000000 #000000 9900 1;
+#X obj 800 300 loadbang;
+#X text 880 300 incoming audio defaults to full on or full off?;
+#X obj 800 390 / 127;
+#X obj 700 430 *~;
+#X msg 800 330 0;
+#X obj 700 570 dac~;
+#X obj 100 400 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 100 660 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 100 630 metro 1000;
+#X text 100 2170 placeholder;
+#X obj 800 470 send~ input;
+#X obj 100 910 soundfiler;
+#X floatatom 100 940 5 0 0 0 - - -, f 5;
+#X obj 240 480 table chan0 88200;
+#X obj 100 740 tabplay~ chan0;
+#X obj 100 480 tabwrite~ chan0;
+#X obj 100 770 throw~ output;
+#X obj 800 500 catch~ output;
+#X obj 100 600 loadbang;
+#X obj 220 740 tabplay~ chan1;
+#X obj 220 770 throw~ output;
+#X obj 340 770 throw~ output;
+#X obj 460 770 throw~ output;
+#X obj 340 740 tabplay~ chan2;
+#X obj 460 740 tabplay~ chan3;
+#X obj 150 400 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 240 450 receive~ input;
+#X obj 200 400 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 250 400 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 240 510 table chan1 88200;
+#X obj 100 510 tabwrite~ chan1;
+#X obj 100 540 tabwrite~ chan2;
+#X obj 240 540 table chan2 88200;
+#X obj 100 570 tabwrite~ chan3;
+#X obj 240 570 table chan3 88200;
+#X text 100 350 This is currently a oneshot looper \, you should replace
+with a custom sound-on-sound looper with variable buffer length.;
+#X msg 100 830 write -wave /home/paulduchesne/test.wav chan0 chan1
+chan2 chan3;
+#X obj 200 940 print report;
+#X msg 120 880 read /home/paulduchesne/test.wav chan0 chan1 chan2 chan3
+;
+#X text 700 600 GUI IDEAS;
+#X text 700 640 some kind of track saving/loading function;
+#X text 700 670 input toggle and meter;
+#X obj 700 860 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 860 860 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X text 700 700 track horizontal control \, including toggle record
+\, toggle playback (manual) input meter \, output meter (hslider) \,
+then amplitudes per scene;
+#X obj 720 860 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 3900 1;
+#X obj 880 860 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 6700 1;
+#X obj 1040 860 moonlib/mknob 25 100 0 127 0 0 empty empty empty -2
+-6 0 8 #fcfcfc #000000 #000000 5900 1;
+#X text 1040 830 scene;
+#X text 700 800 loop controls;
+#X text 700 830 record toggle/meter;
+#X text 860 830 playback toggle/meter;
+#X text 100 130 Concept for telafonics is a mass looper which allows
+recording layers of sound which essentially run continuously \, with
+midi notes triggering amplitude settings to "play" the tracks to varying
+degrees.;
+#X obj 570 1410 poke~;
+#X text 400 950 research sound on sound looper;
+#X text 400 980 possible model \, single count object which is subdivided
+by DIV settings for each loop \, these then feed into continuous input
+buffers which can just layer sound. Also need a clear button.;
+#X obj 200 1130 count~;
+#X obj 200 1100 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X text 250 1190 okay this is now the equiv of spine;
+#X text 250 1220 for each track you should set a chunk size \, eg 700ms
+;
+#X text 250 1250 and then all loop lengths are subdivisions against
+that;
+#X obj 570 1280 loadbang;
+#X msg 570 1310 1986;
+#X obj 570 1340 s chunk;
+#X floatatom 50 1750 5 0 0 0 - - -, f 5;
+#X obj 60 1880 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
+#000000 #000000 2942 1;
+#X obj 40 1320 /~ 100000;
+#X obj 40 1380 wrap~;
+#X obj 400 1680 > 0.5;
+#X obj 392 1715 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X obj 390 1740 change;
+#X obj 390 1790 sel 1;
+#X obj 390 1830 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 348 1907 timer;
+#X floatatom 348 1937 5 0 0 0 - - -, f 5;
+#X obj 390 1860 t b b;
+#X text 408 1937 so this should equal 1986;
+#X floatatom 90 1160 5 0 0 0 - - -, f 5;
+#X obj 90 1100 loadbang;
+#X msg 90 1130 1;
+#X obj 87 1186 *;
+#X obj 154 1166 r chunk;
+#X floatatom 100 1220 5 0 0 0 - - -, f 5;
+#X obj 130 1280 * 44.01;
+#X obj 50 1720 unsig~ 2;
+#X obj 84 1831 * 127;
+#X text 90 1380 connect this up to sound buffer to playback loops;
+#X text 90 1410 then use poke to intercept and add audio signal;
+#X text 210 1280 depends on sample rate;
+#X connect 8 0 14 0;
+#X connect 10 0 13 0;
+#X connect 11 0 15 0;
+#X connect 13 0 14 1;
+#X connect 14 0 16 0;
+#X connect 14 0 16 1;
+#X connect 14 0 21 0;
+#X connect 15 0 10 0;
+#X connect 17 0 26 0;
+#X connect 18 0 25 0;
+#X connect 18 0 30 0;
+#X connect 18 0 34 0;
+#X connect 18 0 35 0;
+#X connect 19 0 18 0;
+#X connect 22 0 23 0;
+#X connect 22 1 48 0;
+#X connect 25 0 27 0;
+#X connect 28 0 16 0;
+#X connect 28 0 16 1;
+#X connect 29 0 19 0;
+#X connect 30 0 31 0;
+#X connect 34 0 32 0;
+#X connect 35 0 33 0;
+#X connect 36 0 41 0;
+#X connect 37 0 41 0;
+#X connect 37 0 26 0;
+#X connect 37 0 42 0;
+#X connect 37 0 44 0;
+#X connect 38 0 42 0;
+#X connect 39 0 44 0;
+#X connect 47 0 22 0;
+#X connect 49 0 22 0;
+#X connect 67 0 77 0;
+#X connect 68 0 67 0;
+#X connect 72 0 73 0;
+#X connect 73 0 74 0;
+#X connect 75 0 79 0;
+#X connect 75 0 96 0;
+#X connect 77 0 78 0;
+#X connect 78 0 95 0;
+#X connect 79 0 80 0;
+#X connect 80 0 81 0;
+#X connect 81 0 82 0;
+#X connect 82 0 83 0;
+#X connect 83 0 86 0;
+#X connect 84 0 85 0;
+#X connect 86 0 84 0;
+#X connect 86 1 84 1;
+#X connect 88 0 91 0;
+#X connect 89 0 90 0;
+#X connect 90 0 88 0;
+#X connect 91 0 93 0;
+#X connect 92 0 91 1;
+#X connect 93 0 94 0;
+#X connect 94 0 77 1;
+#X connect 95 0 75 0;
+#X connect 96 0 76 0;
