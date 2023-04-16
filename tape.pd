@@ -1,0 +1,12 @@
+#N canvas 960 69 960 986 12;
+#X text 100 100 tape subpatch!;
+#X text 100 130 Tape takes three things \, an on/off record toggle
+\, a tape loop length and an audio input.;
+#X text 100 180 The most complex part here is taking a continuous shared
+counter \, wrapping it to a single loop \, and resizing the output
+signal so it constantly runs a record/playback head at signal rate.
+;
+#X text 100 260 test you can rig up - hardcode the loop length to 7000ms
+\, and then created something which loops the incoming shared signal
+to this length while also sending properly scaled audio signal to playback
+a sample.;

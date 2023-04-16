@@ -1,4 +1,4 @@
-#N canvas 960 69 960 986 12;
+#N canvas 960 69 960 462 12;
 #X text 100 100 Telafonics;
 #X text 100 210 Goals: 1) basic looper which allows input for a four
 track with a set length and shared loop length for playback;
@@ -17,7 +17,7 @@ at a time.;
 #X obj 600 300 adc~ 1;
 #X text 660 300 incoming sound;
 #X obj 800 360 moonlib/mknob 25 100 0 127 0 0 empty empty empty -2
--6 0 8 #fcfcfc #000000 #000000 9900 1;
+-6 0 8 #fcfcfc #000000 #000000 0 1;
 #X obj 800 300 loadbang;
 #X text 880 300 incoming audio defaults to full on or full off?;
 #X obj 800 390 / 127;
@@ -76,11 +76,11 @@ chan2 chan3;
 \, toggle playback (manual) input meter \, output meter (hslider) \,
 then amplitudes per scene;
 #X obj 720 860 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 3900 1;
+#000000 #000000 0 1;
 #X obj 880 860 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 6700 1;
+#000000 #000000 0 1;
 #X obj 1040 860 moonlib/mknob 25 100 0 127 0 0 empty empty empty -2
--6 0 8 #fcfcfc #000000 #000000 5900 1;
+-6 0 8 #fcfcfc #000000 #000000 0 1;
 #X text 1040 830 scene;
 #X text 700 800 loop controls;
 #X text 700 830 record toggle/meter;
@@ -107,7 +107,7 @@ that;
 #X obj 570 1340 s chunk;
 #X floatatom 50 1750 5 0 0 0 - - -, f 5;
 #X obj 60 1880 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 #fcfcfc
-#000000 #000000 2942 1;
+#000000 #000000 0 1;
 #X obj 40 1320 /~ 100000;
 #X obj 40 1380 wrap~;
 #X obj 400 1680 > 0.5;
@@ -133,6 +133,8 @@ that;
 #X text 90 1380 connect this up to sound buffer to playback loops;
 #X text 90 1410 then use poke to intercept and add audio signal;
 #X text 210 1280 depends on sample rate;
+#X obj 100 2000 tape 7000;
+#X text 200 2000 < new subpatch to handle looper functions;
 #X connect 8 0 14 0;
 #X connect 10 0 13 0;
 #X connect 11 0 15 0;
